@@ -7,28 +7,28 @@ function UseImageList() {
         isLoading:true
     })
     async function downloadList(limit) {
-        setImageList.isLoading(true)
+        setImageList((state)=> ({...state,isLoading:true}))
         const response=await axios.get(`https://api.slingacademy.com/v1/sample-data/photos?offset=${limit}&limit=20`)
         const photoDetail = response.data.photos
         console.log(response.data.limit);
-        setImageList.images(photoDetail)
-        setImageList.isLoading(false)
+        setImageList((state)=> ({...state,images:photoDetail,isLoading:false}))
+        
     }
 
     useEffect(()=>{
-        downloadList(setImageList.limit)
-    },[setImageList.limit])
+        downloadList(imageList.limit)
+    },[imageList.limit])
 
 
     const handlePrev=()=>{
-        setImageList.limit(limit => limit-20)
+        setImageList({...imageList,limit:imageList.limit-20})
     }
 
     const handleNext=()=>{
-        setImageList.limit(limit => limit+20)
+        setImageList({...imageList,limit:imageList.limit+20})
     }
     return{
-        imageList,setImageList
+        imageList,setImageList,handleNext,handlePrev
     }
 }
 

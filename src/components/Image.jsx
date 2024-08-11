@@ -1,8 +1,8 @@
 
-function Image({image,key}) {
+function Image({image}) {
     return (
         <>
-        <img className="rounded-3xl w-64 object-cover"key={key} src={image} />
+        <img className="rounded-3xl w-64 object-cover"src={image} />
         </>
     )
 }
