@@ -10,7 +10,6 @@ function UseImageList() {
         setImageList((state)=> ({...state,isLoading:true}))
         const response=await axios.get(`https://api.slingacademy.com/v1/sample-data/photos?offset=${limit}&limit=20`)
         const photoDetail = response.data.photos
-        console.log(response.data.limit);
         setImageList((state)=> ({...state,images:photoDetail,isLoading:false}))
         
     }

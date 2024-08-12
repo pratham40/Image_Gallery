@@ -10,7 +10,7 @@ function ImageList() {
             <div className="flex flex-wrap gap-3">
                 {
                    (isLoading)?"Loading ...":
-                   images.map((p)=> <Image key={p.id} image={p.url}/>)
+                   images.map((p)=> <Image key={p.id} image={p.url} id={p.id}/>)
                 }
             </div>
 
